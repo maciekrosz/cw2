@@ -1,25 +1,29 @@
+import java.util.Arrays;
 public class Main {
-
-    public static int findDominant(int[] array) {
+    public static int[] rotateArray(int[] array, int positions) {
         int n = array.length;
-        if (n == 0) {
-            return -1;
+        if (n == 0 || positions == 0 || positions % n == 0) {
+            return array;
         }
-        for (int i = 0; i < n; i++) {
-            int count = 0;
-            for (int j = 0; j < n; j++) {
-                if (array[i] == array[j]) {
-                    count++;
-                }
+        positions = positions % n;
+        int temp;
+        for (int i = 0; i < positions; i++) {
+            temp = array[n - 1];
+            for (int j = n - 1; j > 0; j--) {
+                array[j] = array[j - 1];
             }
-            if (count > n / 2) {
-                return array[i];
-            }
+            array[0] = temp;
         }
-        return -1;
+
+        return array;
     }
+
     public static void main(String[] args) {
-        int[] array = {3, 3, 3, 2, 2};
-        System.out.println(findDominant(array));
+        int[] array = {1, 2, 3, 4, 5};
+        int positions = 2;
+        int[] rotatedArray = rotateArray(array, positions);
+        System.out.println(Arrays.toString(rotatedArray));
+
     }
 }
+
