@@ -20,6 +20,6 @@ public class Main {
     }
     public static void main(String[] args) {
         int[] array = {3, 3, 3, 2, 2};
-        System.out.println(findDominant);
+        System.out.println(findDominant(array));
     }
 }
